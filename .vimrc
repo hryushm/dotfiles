@@ -67,6 +67,7 @@ if has('vim_starting')
       nnoremap sQ :<C-u>bd<CR>
       nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
       nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+      nnoremap sf :<C-u>Unite file<CR>
 
       call neobundle#end()
 
