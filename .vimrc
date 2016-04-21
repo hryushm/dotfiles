@@ -21,6 +21,8 @@
 :set nobackup
 :set writebackup
 :set clipboard=unnamed,autoselect
+:set hlsearch
+:set incsearch
 
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -46,6 +48,8 @@ if has('vim_starting')
       NeoBundle 'Shougo/neosnippet.vim'
       NeoBundle 'Shougo/neosnippet-snippets'
       NeoBundle 'jelera/vim-javascript-syntax'
+      NeoBundle 'tyru/open-browser.vim'
+      NeoBundle 'kannokanno/previm'
 
       NeoBundle 'Shougo/neocomplcache'
       " Disable AutoComplPop.
