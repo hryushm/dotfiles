@@ -15,11 +15,12 @@
 :set number
 :set ruler
 :set list
-:set listchars=tab:>-,extends:<,trail:-,eol:<
+:set listchars=tab:>-,extends:<,trail:-
 :set laststatus=2
 :set showcmd
 :set nobackup
 :set writebackup
+:set clipboard=unnamed,autoselect
 
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -35,12 +36,58 @@ if has('vim_starting')
 
 	  NeoBundle 'Shougo/unite.vim'
 	  NeoBundle 'Shougo/neomru.vim'
-	  NeoBundle 'scrooloose/nerdtree'
       NeoBundle 'tpope/vim-rails'
       NeoBundle 'tpope/vim-fugitive'
       NeoBundle 'tyru/caw.vim.git'
       NeoBundle 'tomtom/tcomment_vim'
-      
+      NeoBundle 'itchyny/lightline.vim'
+      NeoBundle 'nathanaelkane/vim-indent-guides'
+      NeoBundle 'marijnh/tern_for_vim'
+      NeoBundle 'Shougo/neosnippet.vim'
+      NeoBundle 'Shougo/neosnippet-snippets'
+      NeoBundle 'jelera/vim-javascript-syntax'
+
+      NeoBundle 'Shougo/neocomplcache'
+      " Disable AutoComplPop.
+      let g:acp_enableAtStartup = 0
+      " Use neocomplcache.
+      let g:neocomplcache_enable_at_startup = 1
+      " Use smartcase.
+      let g:neocomplcache_enable_smart_case = 1
+      " Set minimum syntax keyword length.
+      let g:neocomplcache_min_syntax_length = 3
+      let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+      " Define dictionary.
+      let g:neocomplcache_dictionary_filetype_lists = {
+                  \ 'default' : ''
+                  \ }
+
+      " Plugin key-mappings.
+      imap <C-k> <Plug>(neosnippet_expand_or_jump)
+      smap <C-k> <Plug>(neosnippet_expand_or_jump)
+      inoremap <expr><C-g>     neocomplcache#undo_completion()
+      inoremap <expr><C-l>     neocomplcache#complete_common_string()
+      " SuperTab like snippets behavior.
+      imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+      smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : \<TAB>"
+      " For snippet_complete marker.
+      if has('conceal')
+          set conceallevel=2 concealcursor=i
+      endif
+
+      " Recommended key-mappings.
+      " <CR>: close popup and save indent.
+      inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+      function! s:my_cr_function()
+          return neocomplcache#smart_close_popup() . "\<CR>"
+      endfunction
+      " <C-h>, <BS>: close popup and delete backword char.
+      inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+      inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+      inoremap <expr><C-y>  neocomplcache#close_popup()
+      inoremap <expr><C-e>  neocomplcache#cancel_popup()   
+
       nnoremap s <Nop>
       nnoremap sj <C-w>j
       nnoremap sk <C-w>k
