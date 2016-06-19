@@ -28,6 +28,8 @@ inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+nnoremap L $
+nnoremap H 0
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
