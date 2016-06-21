@@ -1,11 +1,11 @@
 :colorscheme elflord
 :syntax on
 :set autoindent
-:set expandtab
+":set expandtab
 :set smartcase
-:set tabstop=4
-:set softtabstop=4
-:set shiftwidth=4
+:set tabstop=2
+:set softtabstop=2
+:set shiftwidth=2
 :set textwidth=0
 :set autoindent
 :set wrap
@@ -14,8 +14,8 @@
 :set showmatch
 :set number
 :set ruler
-:set list
-:set listchars=tab:>-,extends:<,trail:-
+" :set list
+" :set listchars=tab:>-,extends:<,trail:-
 :set laststatus=2
 :set showcmd
 :set nobackup
