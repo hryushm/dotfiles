@@ -3,11 +3,10 @@
 :set autoindent
 ":set expandtab
 :set smartcase
-:set tabstop=2
-:set softtabstop=2
-:set shiftwidth=2
+:set tabstop=4
+:set softtabstop=4
+:set shiftwidth=4
 :set textwidth=0
-:set autoindent
 :set wrap
 :set wrapscan
 :set wildmenu
