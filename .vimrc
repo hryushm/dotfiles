@@ -77,7 +77,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
 NeoBundle 'Shougo/vimfiler'
-    nnoremap sf :<C-u>VimFiler -split -simple -winwidth=20 -no-quit<CR>
+    nnoremap sf :<C-u>VimFiler -split -simple -winwidth=25 -no-quit<CR>
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'kana/vim-submode'
