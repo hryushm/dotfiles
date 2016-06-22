@@ -28,8 +28,33 @@ inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
 nnoremap L $
 nnoremap H 0
+
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
@@ -50,33 +75,12 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/neomru.vim'
-    nnoremap s <Nop>
-    nnoremap sj <C-w>j
-    nnoremap sk <C-w>k
-    nnoremap sl <C-w>l
-    nnoremap sh <C-w>h
-    nnoremap sJ <C-w>J
-    nnoremap sK <C-w>K
-    nnoremap sL <C-w>L
-    nnoremap sH <C-w>H
-    nnoremap sn gt
-    nnoremap sp gT
-    nnoremap sr <C-w>r
-    nnoremap s= <C-w>=
-    nnoremap sw <C-w>w
-    nnoremap so <C-w>_<C-w>|
-    nnoremap sO <C-w>=
-    nnoremap sN :<C-u>bn<CR>
-    nnoremap sP :<C-u>bp<CR>
-    nnoremap st :<C-u>tabnew<CR>
     nnoremap sT :<C-u>Unite tab<CR>
-    nnoremap ss :<C-u>sp<CR>
-    nnoremap sv :<C-u>vs<CR>
-    nnoremap sq :<C-u>q<CR>
-    nnoremap sQ :<C-u>bd<CR>
-    nnoremap sf :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
+NeoBundle 'Shougo/vimfiler'
+    nnoremap sf :<C-u>VimFiler -split -simple -winwidth=25 -no-quit<CR>
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'kana/vim-submode'
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
     let g:indent_guides_auto_colors=0
@@ -124,6 +128,16 @@ NeoBundle 'Shougo/neosnippet-snippets'
     endif
 
 call neobundle#end()
+
+" for submode
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " Required:
 filetype plugin indent on
