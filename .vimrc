@@ -22,6 +22,7 @@
 :set clipboard=unnamed,autoselect
 :set hlsearch
 :set incsearch
+:set fileencodings=utf-8,sjis,euc-jp
 
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -72,6 +73,7 @@ NeoBundle 'tyru/caw.vim.git'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'mattn/emmet-vim'
 
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
@@ -108,6 +110,7 @@ NeoBundle 'Shougo/neocomplcache'
 
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+	let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
     " Plugin key-mappings.
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
     smap <C-k>     <Plug>(neosnippet_expand_or_jump)
