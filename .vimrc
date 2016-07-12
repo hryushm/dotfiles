@@ -24,6 +24,8 @@
 :set incsearch
 :set fileencodings=utf-8,sjis,euc-jp
 
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
