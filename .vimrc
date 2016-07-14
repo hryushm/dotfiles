@@ -1,4 +1,3 @@
-:colorscheme elflord
 :syntax on
 :set autoindent
 ":set expandtab
@@ -69,6 +68,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'tomasr/molokai'
+
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim.git'
@@ -132,6 +133,9 @@ NeoBundle 'Shougo/neosnippet-snippets'
     endif
 
 call neobundle#end()
+
+:colorscheme molokai
+:set background=dark
 
 " for submode
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
