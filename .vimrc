@@ -73,6 +73,7 @@ NeoBundle 'tyru/caw.vim.git'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'mattn/emmet-vim'
 
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
