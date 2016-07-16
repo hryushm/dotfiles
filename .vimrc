@@ -1,6 +1,6 @@
 :syntax on
 :set autoindent
-":set expandtab
+:set expandtab
 :set smartcase
 :set tabstop=4
 :set softtabstop=4
@@ -12,8 +12,8 @@
 :set showmatch
 :set number
 :set ruler
-" :set list
-" :set listchars=tab:>-,extends:<,trail:-
+:set list
+:set listchars=tab:>-,extends:<,trail:-
 :set laststatus=2
 :set showcmd
 :set nobackup
