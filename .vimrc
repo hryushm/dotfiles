@@ -1,4 +1,3 @@
-:colorscheme elflord
 :syntax on
 :set autoindent
 :set expandtab
@@ -7,7 +6,6 @@
 :set softtabstop=4
 :set shiftwidth=4
 :set textwidth=0
-:set autoindent
 :set wrap
 :set wrapscan
 :set wildmenu
@@ -23,6 +21,9 @@
 :set clipboard=unnamed,autoselect
 :set hlsearch
 :set incsearch
+:set fileencodings=utf-8,sjis,euc-jp
+
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
@@ -67,12 +68,15 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'tomasr/molokai'
+
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/caw.vim.git'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'mattn/emmet-vim'
 
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
@@ -109,6 +113,7 @@ NeoBundle 'Shougo/neocomplcache'
 
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+	let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
     " Plugin key-mappings.
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
     smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -128,6 +133,9 @@ NeoBundle 'Shougo/neosnippet-snippets'
     endif
 
 call neobundle#end()
+
+:colorscheme molokai
+:set background=dark
 
 " for submode
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
