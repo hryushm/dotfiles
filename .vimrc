@@ -131,7 +131,6 @@ NeoBundle 'Shougo/neosnippet-snippets'
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
-
 call neobundle#end()
 
 :colorscheme molokai
