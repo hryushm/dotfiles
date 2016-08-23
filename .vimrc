@@ -21,7 +21,7 @@
 :set clipboard=unnamed,autoselect
 :set hlsearch
 :set incsearch
-:set fileencodings=utf-8,sjis,euc-jp
+:set fileencodings=utf-8,sjis,euc-jp,cp932
 
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
