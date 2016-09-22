@@ -56,6 +56,8 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
+nnoremap s[ :bprevious<CR>
+nnoremap s] :bnext<CR>
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
@@ -77,6 +79,9 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'nelstrom/vim-visual-star-search'
 
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
