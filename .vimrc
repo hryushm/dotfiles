@@ -56,6 +56,8 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
+nnoremap s[ :bprevious<CR>
+nnoremap s] :bnext<CR>
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
@@ -77,6 +79,9 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'nelstrom/vim-visual-star-search'
 
 NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
@@ -150,3 +155,71 @@ call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 filetype plugin indent on
 
 NeoBundleCheck
+
+" lightline settings
+" cut and paste from http://itchyny.hatenablog.com/entry/20130828/1377653592
+let g:lightline = {
+			\ 'colorscheme': 'wombat',
+			\ 'mode_map': {'c': 'NORMAL'},
+			\ 'active': {
+			\   'left': [
+			\     [ 'mode', 'paste' ],
+			\     [ 'fugitive', 'filename' ] ],
+			\   'right': [
+			\     ['lineinfo', 'syntastic'],
+			\     ['percent'],
+			\     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+			\   ]
+			\ },
+			\ 'component_function': {
+			\   'modified': 'LightLineModified',
+			\   'readonly': 'LightLineReadonly',
+			\   'fugitive': 'LightLineFugitive',
+			\   'filename': 'LightLineFilename',
+			\   'fileformat': 'LightLineFileformat',
+			\   'filetype': 'LightLineFiletype',
+			\   'fileencoding': 'LightLineFileencoding',
+			\   'mode': 'LightLineMode'
+			\ },
+			\ }
+
+function! LightLineModified()
+	return winwidth(0) > 70 ? (&ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-') : ''
+endfunction
+
+function! LightLineReadonly()
+	return winwidth(0) > 70 ? (&ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : '') : ''
+endfunction
+
+function! LightLineFilename()
+	return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+				\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+				\  &ft == 'unite' ? unite#get_status_string() :
+				\  &ft == 'vimshell' ? vimshell#get_status_string() :
+				\ '' != expand('%:p') ? expand('%:p') : '[No Name]') .
+				\ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+	if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+		return fugitive#head()
+	else
+		return ''
+	endif
+endfunction
+
+function! LightLineFileformat()
+	return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+	return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+	return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+	return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
