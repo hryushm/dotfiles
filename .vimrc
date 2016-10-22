@@ -23,6 +23,12 @@
 :set incsearch
 :set fileencodings=utf-8,sjis,euc-jp,cp932
 
+" Leader
+:let mapleader = "\<Space>"
+nnoremap <Leader>p "0p
+nnoremap <Leader>P "0P
+nnoremap <Leader>d "_d
+
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 inoremap { {}<Left>
@@ -58,6 +64,8 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap s[ :bprevious<CR>
 nnoremap s] :bnext<CR>
+nnoremap <Leader>n nzz
+nnoremap <Leader>N Nzz
 
 if has('vim_starting')
     set nocompatible               " Be iMproved
