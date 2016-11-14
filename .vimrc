@@ -82,6 +82,7 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'cohama/agit.vim'
 NeoBundle 'tyru/caw.vim.git'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'itchyny/lightline.vim'
