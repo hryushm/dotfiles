@@ -23,6 +23,9 @@
 :set incsearch
 :set fileencodings=utf-8,sjis,euc-jp,cp932
 
+:set cursorline
+:set cursorcolumn
+
 " Leader
 :let mapleader = "\<Space>"
 nnoremap <Leader>p "0p
@@ -95,6 +98,7 @@ NeoBundle 'Shougo/unite.vim'
     nnoremap sT :<C-u>Unite tab<CR>
 NeoBundle 'Shougo/vimfiler'
     nnoremap sf :<C-u>VimFiler -split -simple -winwidth=25 -no-quit<CR>
+    let g:vimfiler_enable_auto_cd = 1
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'kana/vim-submode'
@@ -144,6 +148,22 @@ NeoBundle 'Shougo/neosnippet-snippets'
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
+
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
+
+let g:syntastic_javascript_checkers=['eslint']
+
+" " エラー行に sign を表示
+let g:syntastic_enable_signs = 1
+" " location list を常に更新
+let g:syntastic_always_populate_loc_list = 0
+" " location list を常に表示
+let g:syntastic_auto_loc_list = 0
+" ファイルを開いた時にチェックを実行する
+let g:syntastic_check_on_open = 1
+" " :wq で終了する時もチェックする
+let g:syntastic_check_on_wq = 0
 
 call neobundle#end()
 
@@ -232,3 +252,11 @@ endfunction
 function! LightLineMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+" if executable('ag')
+" 	let g:unite_source_grep_command = 'ag'
+" 	let g:unite_source_grep_default_opts = '--nogroup --nocolor --column -S'
+" 	let g:unite_source_grep_recursive_opt = ''
+" endif
+
+:set viminfo='1000,f1,<500,\"10000
